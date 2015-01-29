@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="MainApplicationModule">
+<html ng-app="MainApp">
 <head>
     <title>Spring-Maven-JUnit-Mockito-Cobertura-Angular-Grunt-Jasmine-Karma</title>
     <link href="public/styles/global.css" rel="stylesheet" />
