@@ -1,5 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="MainApplicationModule">
+<head>
+    <title>Spring-Maven-JUnit-Mockito-Cobertura-Angular-Grunt-Jasmine-Karma</title>
+    <link href="public/styles/global.css" rel="stylesheet" />
+</head>
 <body>
-	Spring MVC Code Coverage Example
+
+<!-- main content -->
+<div id="pageContent">
+
+    <!-- partial container -->
+    <div ng-view></div>
+
+</div>
+
+<!-- App libs -->
+<script src="public/scripts/angular.js"></script>
+<script src="app/app.js"></script>
+
+<!-- how do i dynamically include files? don't want to list them all here! -->
+<script src="app/controllers/about-controller.js"></script>
+<script src="app/services/data-service.js"></script>
+
 </body>
 </html>
