@@ -65,7 +65,7 @@ module.exports = function(grunt) {
     // Define additional tasks
 
     grunt.registerTask('test', ['karma', 'maven:test']);
-    grunt.registerTask('pre-deploy', ['sass:dist', 'concat', 'uglify']);
+    grunt.registerTask('pre-deploy', ['concat', 'uglify']);
 
 };
 
