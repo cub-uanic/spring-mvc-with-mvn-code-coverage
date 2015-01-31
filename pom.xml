@@ -42,6 +42,12 @@
           <groupId>org.springframework</groupId>
           <artifactId>spring-core</artifactId>
           <version>${org.springframework.version}</version>
+          <exclusions>
+              <exclusion>
+                  <artifactId>commons-logging</artifactId>
+                  <groupId>commons-logging</groupId>
+              </exclusion>
+          </exclusions>
       </dependency>
       <dependency>
           <groupId>org.springframework</groupId>
@@ -74,6 +80,23 @@
           <version>${org.springframework.version}</version>
       </dependency>
 
+      <!-- logging -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.7.10</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>1.7.10</version>
+      </dependency>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.0.7</version>
+      </dependency>
+
       <!--commons-->
       <dependency>
           <groupId>commons-collections</groupId>
@@ -85,21 +108,23 @@
           <artifactId>commons-lang</artifactId>
           <version>2.6</version>
       </dependency>
-      <dependency>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-          <version>1.1.1</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-          <version>2.0</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-fileupload</groupId>
-          <artifactId>commons-fileupload</artifactId>
-          <version>1.2.1</version>
-      </dependency>
+      <!--
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+        </dependency>
 
       <!-- Test -->
       <dependency>

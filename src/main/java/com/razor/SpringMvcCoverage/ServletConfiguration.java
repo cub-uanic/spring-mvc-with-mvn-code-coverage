@@ -1,5 +1,7 @@
 package com.razor.SpringMvcCoverage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,8 @@ import java.util.Map;
 @ComponentScan(basePackages = "com.razor.SpringMvcCoverage")
 public class ServletConfiguration extends WebMvcConfigurerAdapter
 {
+    private final static Logger LOG = LoggerFactory.getLogger(ServletConfiguration.class);
+
     /**
      * pass through for static content
      *
@@ -39,6 +42,7 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry configurer)
     {
+        LOG.info("Added resource handlers");
         configurer.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
     }
 
@@ -55,6 +59,8 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
         String[] basenames = {"messages"};
 
         result.setBasenames(basenames);
+
+        LOG.info("set Message Source");
 
         return result;
     }
@@ -90,6 +96,9 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
         List<ViewResolver> viewResolvers = new ArrayList<ViewResolver>();
         viewResolvers.add(jspView());
         contentNegotiatingViewResolver.setViewResolvers(viewResolvers);
+
+        LOG.info("completed ContentNegotiatingViewResolver");
+
         return contentNegotiatingViewResolver;
     }
 
@@ -104,6 +113,9 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
+
+        LOG.info("completed InternalResourceViewResolver");
+
         return viewResolver;
     }
 
@@ -115,6 +127,7 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
     {
+        LOG.info("configured default servlet handling");
         configurer.enable();
     }
 
