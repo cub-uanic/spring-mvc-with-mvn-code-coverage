@@ -43,7 +43,17 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
     public void addResourceHandlers(final ResourceHandlerRegistry configurer)
     {
         LOG.info("Added resource handlers");
-        configurer.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
+        // configurer.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
+        // configurer.addResourceHandler("/assets/**").addResourceLocations
+        //    ("classpath:/META-INF/resources/webjars/").setCachePeriod(31556926);
+
+        configurer
+                .addResourceHandler("/app/**")
+                .addResourceLocations("/app/").setCachePeriod(31556926);
+
+        configurer
+                .addResourceHandler("/public/**")
+                .addResourceLocations("/public/").setCachePeriod(31556926);
     }
 
     /**
@@ -104,6 +114,7 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
 
     /**
      * JSP view
+     * or getInternalResourceViewResolver
      */
 
     @Bean
@@ -111,7 +122,7 @@ public class ServletConfiguration extends WebMvcConfigurerAdapter
     {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/jsp/");
+        viewResolver.setPrefix("/jsp/");
         viewResolver.setSuffix(".jsp");
 
         LOG.info("completed InternalResourceViewResolver");
